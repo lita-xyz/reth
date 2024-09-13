@@ -19,18 +19,6 @@ mod trusted_setup {
     use crate::kzg::KzgSettings;
     use std::io::Write;
 
-    /// Loads the trusted setup parameters from the given bytes and returns the [`KzgSettings`].
-    ///
-    /// This creates a temp file to store the bytes and then loads the [`KzgSettings`] from the file
-    /// via [`KzgSettings::load_trusted_setup_file`].
-    pub fn load_trusted_setup_from_bytes(
-        bytes: &[u8],
-    ) -> Result<KzgSettings, LoadKzgSettingsError> {
-        let mut file = tempfile::NamedTempFile::new().map_err(LoadKzgSettingsError::TempFileErr)?;
-        file.write_all(bytes).map_err(LoadKzgSettingsError::TempFileErr)?;
-        KzgSettings::load_trusted_setup_file(file.path()).map_err(LoadKzgSettingsError::KzgError)
-    }
-
     /// Error type for loading the trusted setup.
     #[derive(Debug, thiserror::Error)]
     pub enum LoadKzgSettingsError {
