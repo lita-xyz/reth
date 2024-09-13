@@ -48,8 +48,8 @@ impl Compact for SignedAuthorization {
         let signature = self.signature();
         let (v, r, s) = (signature.v(), signature.r(), signature.s());
         buf.put_u8(v.y_parity_byte());
-        buf.put_slice(r.as_le_slice());
-        buf.put_slice(s.as_le_slice());
+        buf.put_slice(&r.to_le_bytes::<32>());
+        buf.put_slice(&s.to_le_bytes::<32>());
 
         // to_compact doesn't write the len to buffer.
         // By placing it as last, we don't need to store it either.
