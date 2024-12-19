@@ -24,6 +24,7 @@ runner = "/valida-toolchain/valida-runner.sh"
 linker = "/valida-toolchain/bin/ld.lld"
 rustflags = [
     "-C", "link-arg=/valida-toolchain/ValidaEntryPoint.o",
+    "-C", "link-arg=/valida-toolchain/io.o",
     "-C", "link-arg=--script=/valida-toolchain/valida.ld",
     "-C", "link-arg=/valida-toolchain/lib/valida-unknown-baremetal-gnu/libc.a",
     "-C", "link-arg=/valida-toolchain/lib/valida-unknown-baremetal-gnu/libm.a",
