@@ -12,6 +12,7 @@ description = "Commonly used types in reth."
 workspace = true
 
 [dependencies]
+valida-rs = { git = "https://github.com/lita-xyz/valida-rs.git", branch = "main" }
 # reth
 reth-primitives-traits.workspace = true
 reth-ethereum-forks.workspace = true
